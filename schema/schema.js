@@ -8,7 +8,8 @@ const {
     GraphQLSchema,
     GraphQLID,
     GraphQLInt,
-    GraphQLList
+    GraphQLList,
+    GraphQLNonNull
 } = graphql;
 
 // dummy data
@@ -96,6 +97,33 @@ const RootQuery = new GraphQLObjectType({
 });
 
 
+//5 define Mutations to make CRUD (create update and delete)
+
+const Mutation = new GraphQLObjectType({
+    name: 'Mutation',
+    fields: {
+        addAuthor: {
+            type: AuthorType,
+            args: {
+                name: { type: GraphQLNonNull(GraphQLString) },
+                age: { type: GraphQLInt }
+            },
+            resolve(parent, args){
+                let author = {
+                    name: args.name,
+                    age: args.age
+                };
+                //logic to adda to database. In the example here we mimic adding a new author to the array
+             authors.push(author);
+             return authors;
+            }
+        }
+    }
+});
+
+
 module.exports = new GraphQLSchema({
-    query:RootQuery
+    query:RootQuery,
+    mutation: Mutation
+
 })
