@@ -1,3 +1,5 @@
+# GraphQL_API
+A basic GraphQL  API using Nodejs and express server
 
 # How to run 
 - clone the code to your local machine
