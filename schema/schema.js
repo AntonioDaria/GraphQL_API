@@ -115,7 +115,7 @@ const Mutation = new GraphQLObjectType({
                 };
                 //logic to adda to database. In the example here we mimic adding a new author to the array
              authors.push(author);
-             return authors;
+             return author;
             }
         }
     }
